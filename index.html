@@ -2,38 +2,108 @@
 <html>
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet"></link>
-	<title>عنوان الصفحة</title>
+	<title>تسجيل الدخول</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- لجعل الصفحة ملائمة لحجم الشاشة -->
 	<style>
 		h1 {
 			text-align: center;
 			font-family: Cairo;
-			font-size: 18px;
+			font-size: 30px;
 		}
-		h2 {
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 50px;
+		}
+		input {
+			margin-bottom: 10px;
+			padding: 5px;
+			font-size: 24px;
+			border-radius: 5px;
+			border: none;
+			width: 200px;
 			text-align: center;
-			font-family: Cairo;
-			font-size: 18px;
 		}
-		img {
+                label {
 			display: block;
-			margin: auto; /* توسيط الصورة */
-			max-width: 100%; /* تحديد عرض الصورة كحد أقصى */
-			height: auto; /* تعديل الارتفاع تلقائيًا وفقًا للعرض */
+                        font-family: Cairo;
+			margin-bottom: 5px;
+			font-size: 24px;
+			color: #333;
+		} 
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 15px;
+			margin-top: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 24px;
 		}
 	</style>
+           <style>
+input[type=text], input[type=password] {
+    background-color: #f2f2f2;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+input[type=text]:hover, input[type=password]:hover {
+    background-color: #ddd;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #3e8e41;
+}
+</style>
+            
 </head>
 <body>
-	<h1>قسم السيطرة والتشغيل و الاتصالات الرئيسي</h1>
-	<h2>موقف توليد الشبكة الوطنية</h2> 
-	<img id="myImage" src="https://drive.google.com/uc?id=1-e24K9vZs_6Wm0ckWQwElA6mVFVOc43R" alt="صورة">
+	<h1>تسجيل الدخول</h1>
+	<form>
+		<label for="username">(اسم المستخدم)</label>
+			<input type="text" id="username" name="username" placeholder="ادخل اسم المستخدم" required>
+		<label for="password">(كلمة المرور)</label>
+			<input type="password" id="password" name="password" placeholder="ادخل كلمة المرور" required>
+		<button type="submit">تسجيل الدخول</button>
+	</form>
+
 	<script>
-		function updateImage() {
-			var img = document.getElementById("myImage");
-			img.src = "https://drive.google.com/uc?id=1-e24K9vZs_6Wm0ckWQwElA6mVFVOc43R&random=" + Math.random();
-			// تضمين رقم عشوائي في الرابط لتجنب الحصول على النسخة المخزنة في الذاكرة المؤقتة للمتصفح
-		}
-		setInterval(updateImage, 10000); // تحديث الصورة كل 5 ثوانٍ
+		var form = document.querySelector("form");
+		form.addEventListener("submit", function(event) {
+			event.preventDefault();
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			if (username === "admin" && password === "123456") {
+				window.location.href = "dashboard.html";
+			} else {
+				alert("اسم المستخدم أو كلمة المرور غير صحيحة!");
+			}
+		});
 	</script>
 </body>
 </html>
